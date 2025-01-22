@@ -4,14 +4,14 @@ An intelligent resume customization tool that tailors your resume to specific jo
 
 ## 🎯 Overview
 
-This project creates custom-tailored resumes based on job descriptions using local LLMs (Phi-2) through LMStudio. It analyzes both your resume metadata and job descriptions to generate optimized, one-page resumes saved in CSV format.
+This project creates custom-tailored resumes based on job descriptions using local LLMs (Phi-4) through LMStudio. It analyzes both your resume metadata and job descriptions to generate optimized, one-page resumes saved in CSV format.
 
 ![image](https://github.com/user-attachments/assets/5c001394-9c78-485d-9415-36a45e3f72a1)
 
 
 ## 🚀 Features
 
-- **Local LLM Integration**: Uses Phi-2 through LMStudio for privacy and cost efficiency
+- **Local LLM Integration**: Uses Phi-4 through LMStudio for privacy and cost efficiency
 - **Intelligent Matching**: Matches your experience with job requirements
 - **Metadata-Based**: Uses structured metadata input instead of PDF parsing
 - **Format Control**: Ensures one-page output with proper section formatting
@@ -57,7 +57,7 @@ This project creates custom-tailored resumes based on job descriptions using loc
 ## 🛠️ Prerequisites
 
 - Python 3.9+
-- LMStudio with Phi-2 model
+- LMStudio with Phi-4 model
 - Required Python packages:
   - langgraph
   - langchain
@@ -156,4 +156,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 - LangGraph team for the workflow framework
 - LMStudio for local LLM support
-- Phi-2 team for the language model
+- Phi-4 team for the language model

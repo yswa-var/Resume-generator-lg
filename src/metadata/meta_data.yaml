@@ -1,0 +1,109 @@
+personal_info:
+  name: "Yashaswa Varshney"
+  email: "yswa.var@gmail.com"
+  github: "https://github.com/yswa-var"
+  phone_number: "+91 6396300355"
+
+education:
+  - degree: "B.Tech"
+    major: "Computer Science"
+    institution: "KIIT"
+    graduation_year: "2024"
+    cgpa: "8.30"
+    minor: "Financial Economics using data analytics"
+
+experience:
+  - title: "Software Developer Engineer"
+    company: "HyperBots"
+    duration: "Aug 2024 - Present"
+    location: "Bengaluru"
+    highlights:
+      - "Worked on multi ERP connectors in Python, for an AI driven Account payable workflow"
+      - "Implemented event based notifications for email, whatsapp and web"
+
+  - title: "Software Developer Intern"
+    company: "Finzome"
+    location: "Mumbai"
+    duration: "June 2024 - August 2024"
+    key_skills: "Python, C, Redis, Rest-API"
+    highlights:
+      - "Built a backtesting framework for Anand Rathi's proprietary data using Python, C, and Redis."
+      - "Developed data science tools to optimize options trading algorithms for optimized trades."
+      - "Designed and implemented a backend for a learning management system, integrating Razorpay for payments."
+
+  - title: "Software Developer Intern"
+    company: "AR Quants"
+    location: "Mumbai"
+    duration: "February 2023 - August 2023"
+    key_skills: "Python, EC2, RDS, Pine Script"
+    highlights:
+      - "Created statistical tools for transaction data analysis to aid in financial decision-making."
+      - "Implemented a high-performance database solution for financial data using InfluxDB."
+      - "Developed multiple trading indicators using Pine Script on TradingView."
+
+skills:
+  technical:
+    - "Python"
+    - "JavaScript"
+    - "C/C++"
+    - "PineScript"
+    - "Lua"
+
+  frameworks_n_tools:
+    - "Rest-API"
+    - "TradingView (Pine Script)"
+    - "Backtesting frameworks"
+    - "GitHub"
+    - "pandas"
+    - "numpy"
+    - "Fast-API"
+    - "SQL"
+    - "NoSQL"
+    - "TimeSeries DB (InfluxDB)"
+    - "LangGraph"
+    - "LangChain"
+    - "nltk"
+
+  soft_skills:
+    - "Financial markets knowledge"
+    - "Analytical problem-solving"
+    - "Automation"
+
+projects:
+  - title: "Relative Rotation Graph"
+    link: "https://github.com/yswa-var/RRG"
+    description: "Developed a customizable tool to analyze sector rotation using open-source Yahoo Finance data. Built a simple Streamlit-based GUI for users to visualize sector performance against a chosen benchmark index or an auto-calculated equal-weighted group index."
+
+  - title: "EasyBT Python library"
+    link: "https://github.com/yswa-var/EasyBt"
+    description: "Developed a Python library for backtesting options trading strategies, designed for both traders and developers. EasyBT simplifies strategy testing with minimal coding requirements. It leverages the Tulipy library, a C-based solution, to perform fast and efficient technical calculations, ensuring accurate and high-performance backtesting."
+
+  - title: "ObsiWatchlist"
+    link: "https://github.com/yswa-var/obsiWatchlist"
+    description: "Developed a simple tool to screen and analyze stocks. This tool scrapes charting screened stocks and gives users matplotlib-based highly customizable charting types like (ohlc, hlc, point-figure, line-break, and equi-volume candle). This project intended to remove dependency on costly software for watchlist management and charting."
+
+  - title: "Chartink Backtestor"
+    link: "https://github.com/yswa-var/chartink-backtestor"
+    description: "A simple Python, Streamlit-hosted research tool that quickly validates the Chartink-based scanners using web scraping."
+
+  - title: "Resume-generator-lg"
+    link: "https://github.com/yswa-var/Resume-generator-lg"
+    description: "An intelligent ethical resume customization tool that tailors your resume to specific job descriptions using LangGraph, local LLMs and user metaData"
+
+  - title: "Tradingview-scripts"
+    link: "https://github.com/yswa-var/Tradingview-scripts"
+    description: "long list of indeicators and tools made for tradingview using pine-script"
+
+certifications_courses_achievements:
+  - title: "Blog: Backtesting the viral Nadaraya-Watson Envelop trading indicator in Python"
+    link: "bit.ly/41ZS5JO"
+    description: "Near 2k monthly views"
+
+  - title: "PowerBI UN Workshop"
+    description: "Participated in a comprehensive PowerBI workshop organized by the UN."
+
+  - title: "Mega Utopia Concept Art Winner"
+    description: "Won the ArtStation Weekly contest for concept art."
+
+  - title: "Hiking: Chandrashilla (12k ft), Bharam Tal (9k ft), Deoria Tal (8k ft)"
+    description: "Completed challenging hikes to Chandrashilla, Bharam Tal, and Deoria Tal, reaching significant altitudes."
