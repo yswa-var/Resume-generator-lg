@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/959ed9ae-f656-4734-a446-d9c436eb35fe)# AI-Powered Resume Generator
+# AI-Powered Resume Generator
 
 An intelligent resume customization tool that tailors your resume to specific job descriptions using LangGraph and local LLMs.
 
