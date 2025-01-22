@@ -63,11 +63,15 @@ skills:
     - "LangGraph"
     - "LangChain"
     - "nltk"
+    - "problem solving capabilities"
+    - "AWS"
+    - "Unix"
 
   soft_skills:
     - "Financial markets knowledge"
     - "Analytical problem-solving"
     - "Automation"
+    - "problem solving capabilities"
 
 projects:
   - title: "Relative Rotation Graph"
