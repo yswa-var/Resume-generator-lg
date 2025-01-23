@@ -1,6 +1,8 @@
 from src.utils.lmstudio_connection import query_lmstudio
 import json
 
+from src.utils.metadata_parser import VectorStore, similar_search, vector_saver
+
 
 def convert_string_to_json(json_string):
     # Remove the leading and trailing '```json' and '\n'
@@ -11,9 +13,9 @@ def convert_string_to_json(json_string):
 
     return json_data
 
-def jd_processor(user_query):
+def jd_processor(user_query) -> dict:
     context = """
-    Please review the job description below and extract the necessary information to create a structured JSON object. Follow the structure provided and ensure that if any specific information is not mentioned in the job description, it is set appropriately as indicated.
+    Please review the job description and extract the necessary information to create a structured JSON object. Follow the structure provided and ensure that if any specific information is not mentioned in the job description, it is set appropriately as indicated.
     
     **Structured JSON Format:**
     
@@ -81,43 +83,81 @@ def jd_processor(user_query):
     result = convert_string_to_json(lms_result)
     return result
 
-#### test ####
-# user_query = """
-#         About the job
-#     Quantitative Developer (Python)
-#
-#     Location: Bangalore
-#
-#     Experience: 2-5 Years
-#
-#     Team: Enterprise Risk Technology
-#
-#     About The Role
-#
-#     Millennium is a top tier global hedge fund with a strong commitment to leveraging innovations in technology and data science to solve complex problems for the business.
-#
-#     The Enterprise Risk Technology team is looking for Quantitative Developer. The developer will leverage Python, FastAPI/Django, AWS, and data manipulation libraries to provide data-driven solutions to stakeholders.
-#
-#     Responsibilities
-#
-#     Work closely with quants, risk managers and other technologists in New York, London and Singapore to develop multi-asset analytics, stress and VaR for our in-house risk platform
-#     Develop micro-services using Python and analyze data with pandas/polars.
-#     Create and manage cloud applications on AWS.
-#     Utilize GIT and appropriate DBMS solutions
-#
-#     Required Skills/experience
-#
-#     Strong analytical skills & problem solving capabilities
-#     Experience working with python, and data analysis libraries (Pandas/Polars)
-#     Experience with REST APIs and cloud services
-#     Relational SQL database development experience
-#     Unix/Linux command-line experience
-#
-#     Desirable Skills/experience
-#
-#     AWS cloud services: EC2, S3, Aurora, Redshift, etc
-#     Identity and Access Management: Kerberos, OAuth 2.0, LDAP
-#     Broad understanding of financial services instruments.
-#     Bachelor’s degree in Computer Science & Engineering from Tier 1 colleges.
-#     """
-# jd_processor(user_query)
+def jd_flatten(data):
+    documents = []
+
+    # Process personal info
+    if 'required_experience' in data:
+        documents.append(f"data: {data.get('required_experience')}")
+
+    if 'required_skills' in data:
+        skills_text = f"required_skills: ({', '.join(data['required_skills'])}"
+        documents.append(skills_text)
+
+    if 'company_name' in data:
+        company_name = data['company_name']
+        documents.append(f"company_name: {company_name}")
+
+
+    if 'job_description' in data:
+        job_description_txt = f"job_description: ({', '.join(data['job_description'])}"
+        documents.append(job_description_txt)
+
+    return documents
+
+
+def main():
+    # Initialize vector store manager
+    jd_query = """
+    Job description
+Job Summary
+As an Artificial Intelligence Engineer at WN Infotech, you will be responsible for developing, implementing, and maintaining AI solutions to enhance our products and services. You will work closely with our software development and data science teams to design and deploy cutting-edge AI algorithms and models. This role offers an exciting opportunity to work on innovative projects and contribute to the advancement of AI technology within our organization.
+Your Role and Responsibilities
+    Develop AI models and algorithms to solve complex business problems and enhance product functionality.
+    Collaborate with software development and data science teams to integrate AI capabilities into existing systems and applications.
+    Research and implement state-of-the-art AI techniques and technologies to improve the performance and efficiency of our AI solutions.
+    Evaluate and optimize AI models for performance, scalability, and accuracy.
+    Stay up-to-date with the latest developments in AI and machine learning by attending conferences, participating in workshops, and engaging with the AI community.
+Required Technical and Professional Expertise
+    Proficiency in programming languages such as Python, Java, or C++.
+    Strong understanding of machine learning algorithms and techniques, including deep learning, reinforcement learning, and natural language processing.
+    Experience with AI development frameworks and libraries such as TensorFlow, PyTorch, or Keras.
+    Solid understanding of software development principles and best practices.
+    Excellent problem-solving skills and attention to detail.
+Qualification & Experience Required
+    Bachelor's degree or higher in Computer Science, Engineering, Mathematics, or a related field.
+    Proven experience in developing and deploying AI solutions in a production environment.
+    Experience with big data technologies such as Hadoop, Spark, or Kafka is a plus.
+    Strong analytical and mathematical skills.
+    Ability to work effectively in a fast-paced and collaborative team environment.
+Role: Machine Learning Engineer
+Industry Type: Software Product
+Department: Data Science & Analytics
+Employment Type: Full Time, Permanent
+Role Category: Data Science & Machine Learning
+Education
+UG: Any Graduate
+PG: Any Postgraduate
+Key Skills
+Computer science deep learning C++ data science Analytical Artificial Intelligence Machine learning Natural language processing big data Python
+    """
+    response = jd_processor(jd_query)
+    response_flatten = jd_flatten(response)
+
+    try:
+        jd_vs = vector_saver(response_flatten, chunk_type="jd")
+
+        # Example search
+        query = "What programming languages are listed in the skills?"
+        results = similar_search(query, vector_store = jd_vs)
+
+        print("\nSearch Results:")
+        for doc in results:
+            print(f"\n{doc.page_content}")
+
+    except Exception as e:
+        print(f"Error: {str(e)}")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,7 +1,7 @@
 import requests
 
 
-def query_lmstudio(user_query, max_tokens=300, context="null"):
+def query_lmstudio(user_query, max_tokens=1000, context="null"):
     """Query LMStudio for completion"""
     url = "http://localhost:1234/v1/chat/completions"
     headers = {"Content-Type": "application/json"}
